@@ -282,6 +282,8 @@ nav a:hover {
 }
 
 .project-link {
+  margin-top: auto;
+  padding-top: 4px;
   text-decoration: none;
   color: var(--accent);
   font-size: 0.86rem;

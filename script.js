@@ -1,42 +1,6 @@
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-const fallbackProjects = [
-  {
-    title: 'Research Showcase Dashboard',
-    description: 'A responsive dashboard to present undergraduate research outcomes and conference highlights with clean, filterable views.',
-    tech: ['HTML', 'CSS Grid', 'JavaScript'],
-    link: 'https://github.com/yourusername/research-showcase'
-  },
-  {
-    title: 'Campus Event Planner',
-    description: 'A lightweight planner for student teams to manage milestones, event timelines, and ownership.',
-    tech: ['React', 'TypeScript', 'Firebase'],
-    link: 'https://github.com/yourusername/campus-event-planner'
-  },
-  {
-    title: 'CV Analyzer Tool',
-    description: 'Parses resume text and compares it against role keywords with actionable scoring feedback.',
-    tech: ['Python', 'FastAPI', 'NLP'],
-    link: 'https://github.com/yourusername/cv-analyzer'
-  }
-];
-
-const fallbackSkills = [
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'TypeScript',
-  'React',
-  'Node.js',
-  'Python',
-  'SQL',
-  'Git',
-  'Figma',
-  'Data Visualization',
-  'Research Presentation'
-];
-
 if (themeToggle) {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
@@ -98,25 +62,64 @@ function renderSkills(skills) {
   });
 }
 
-async function loadJson(path, fallback) {
-  try {
-    const res = await fetch(path);
-    if (!res.ok) throw new Error(`Request failed for ${path}`);
-    const data = await res.json();
-    return Array.isArray(data) ? data : fallback;
-  } catch (error) {
-    console.warn(`Using fallback for ${path}.`, error);
-    return fallback;
+async function loadJson(paths) {
+  let lastError = null;
+
+  for (const path of paths) {
+    try {
+      const res = await fetch(path, { cache: 'no-store' });
+      if (!res.ok) {
+        throw new Error(`Request failed for ${path} with status ${res.status}`);
+      }
+
+      const data = await res.json();
+      if (!Array.isArray(data)) {
+        throw new Error(`Invalid JSON shape in ${path}`);
+      }
+
+      return data;
+    } catch (error) {
+      lastError = error;
+    }
   }
+
+  throw lastError || new Error('Could not load JSON from any candidate path.');
 }
 
 async function initPortfolio() {
-  const [projects, skills] = await Promise.all([
-    loadJson('projects.json', fallbackProjects),
-    loadJson('skills.json', fallbackSkills)
-  ]);
-  renderProjects(projects);
-  renderSkills(skills);
+  try {
+    const [projects, skills] = await Promise.all([
+      loadJson([
+        './projects.json',
+        'projects.json',
+        '/projects.json',
+        './website/projects.json',
+        '/website/projects.json'
+      ]),
+      loadJson([
+        './skills.json',
+        'skills.json',
+        '/skills.json',
+        './website/skills.json',
+        '/website/skills.json'
+      ])
+    ]);
+    renderProjects(projects);
+    renderSkills(skills);
+  } catch (error) {
+    console.error('Failed to load portfolio JSON:', error);
+    renderProjects([]);
+    renderSkills([]);
+
+    const projectsContainer = document.getElementById('projects-list');
+    const skillsContainer = document.getElementById('skills-list');
+    if (projectsContainer) {
+      projectsContainer.innerHTML = '<p class="project-desc">Could not load projects.json. Confirm the file is in the same folder as index.html.</p>';
+    }
+    if (skillsContainer) {
+      skillsContainer.innerHTML = '<p class="project-desc">Could not load skills.json. Confirm the file is in the same folder as index.html.</p>';
+    }
+  }
 }
 
 initPortfolio();
