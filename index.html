@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Garv Sachdev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#" class="logo">Garv Sachdev</a>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="theme-toggle" aria-label="Toggle theme">Theme</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="left-panel">
+      <img src="profile.jpg" alt="Profile photo" class="profile-photo" />
+      <p class="greeting">Image: ICUR Conference 2025</p>
+      <h1>Garv Sachdev</h1>
+      <h2>B.Engg (Hons) Computer Engineering & Data Analysis @ NTU, Singapore</h2>
+      <p class="hero-description">
+        I'm interested in AI and machine learning, how humans interact with intelligent systems, and how software meets hardware. I like understanding things from first principles and then shipping them into the world.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="resume.pdf" class="btn secondary" download>Master Resume 2026 Q1</a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/gavkujo" target="_blank" aria-label="GitHub">GitHub</a>
+        <a href="https://linkedin.com/in/garv-sachdev-838287227/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+    </aside>
+
+    <div class="right-panel">
+      <section id="projects" class="panel">
+        <div class="section-heading">
+          <h2>Highlighted Projects</h2>
+          <div class="line"></div>
+        </div>
+        <div id="projects-list" class="projects-grid"></div>
+      </section>
+
+      <section id="skills" class="panel">
+        <div class="section-heading">
+          <h2>Highlighted Skills</h2>
+          <div class="line"></div>
+        </div>
+        <div id="skills-list" class="skills-grid"></div>
+      </section>
+
+      <section id="contact" class="panel contact-section">
+        <h2 class="contact-title">Contact</h2>
+        <p class="contact-desc">Open to freelance research and engineering roles. If you have an idea, let’s build it.</p>
+        <a href="mailto:sachdev.garv@gmail.com" class="btn primary contact-btn">sachdev.garv@gmail.com</a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Garv Sachdev</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

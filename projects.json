@@ -1,0 +1,38 @@
+[
+  {
+    "title": "BPE Transformer on AMD Kria KR260 FPGA",
+    "description": "Hardware-accelerated language model inference on FPGA, offloading INT8 matrix multiplications and multi-head attention to programmable logic with weights in on-chip BRAM. Achieved ~6-7x overall speedup over CPU with real-time autoregressive generation.",
+    "tech": ["Vitis HLS", "Vivado", "PYNQ", "Python", "C++"],
+    "link": "https://github.com/gavkujo/transformer-acceleration-on-fpga/tree/main/basic_charlm"
+  },
+  {
+    "title": "Autonomous Robotic Car (MDP)",
+    "description": "Designed and implemented a deterministic STM32 RTOS architecture for motion and safety-critical control, with a 5-task pipeline (Communication → Control → Motor + IMU/Encoder) using priority scheduling, semaphore-gated sensor timers, and queue-based decoupling. Built the RPi multiprocess orchestration layer bridging Bluetooth Android control, camera-based image recognition (via API inference), and serial STM command flow with ACK-gated sequencing.",
+    "tech": ["C", "FreeRTOS", "STM32", "Python", "Raspberry Pi", "Picamera2", "UART"],
+    "link": "https://github.com/gavkujo/MDP-26S1"
+  },
+  {
+    "title": "AI-Powered Self-Regulated Learning System",
+    "description": "Dual-channel AI tutoring system with novel evaluation metrics (GSS, RDS), intelligent journaling, SWOT-based self-insight, and auto-generated micro-quizzes. A 3-week study (n=15) showed +21% quiz score improvement and +22 min/session engagement.",
+    "tech": ["Python", "LLMs", "NLP", "React"],
+    "link": "https://visionlearning.garvsachdev.com"
+  },
+  {
+    "title": "Hardware Trojan Detection Using AI",
+    "description": "AI-powered security tool detecting malicious modifications in RTL code and GDSII layouts using Graph Neural Networks and anomaly detection, designed as a pre-silicon checkpoint for IC design houses and defence organisations.",
+    "tech": ["Python", "PyTorch", "GNNs", "Graph ML"],
+    "link": "https://github.com/gavkujo/AI-Aided-Trojan-Detection-RTL-level"
+  },
+  {
+    "title": "Hybrid Protein Secondary Structure Prediction",
+    "description": "Four-generation deep learning architecture progression culminating in HybridPSSP v4, fusing Transformer encoders, dilated residual CNNs, and ESM embeddings. Achieved Q3 macro-F1 of 0.8707, approaching state-of-the-art on CB513.",
+    "tech": ["Python", "PyTorch", "Transformers", "ESM", "BiLSTM"],
+    "link": "https://github.com/gavkujo/Protein-Secondary-Structure-Prediction-PSSP-SC4001-Project"
+  },
+  {
+    "title": "Emergent Individuality in Neural Networks",
+    "description": "Research demonstrating that identically initialised RNNs develop distinct internal dynamics purely through experiential history. A linear decoder identified which of 4 experiential streams a network underwent with 1.000 accuracy, using biologically-inspired Hebbian sleep consolidation.",
+    "tech": ["Python", "PyTorch", "RNNs", "Neuroscience-Inspired ML"],
+    "link": "https://github.com/gavkujo/emergent-individuality-rnn"
+  }
+]
